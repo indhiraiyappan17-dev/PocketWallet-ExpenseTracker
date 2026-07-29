@@ -1,11 +1,11 @@
 :root{
-    primary:#4CAF50;
-    bg:#f4f7fb;
-    text:#333;
-    white:#fff;
-    border:#ddd;
-    radius:10px;
-   spacing:20px;
+    --primary:#4CAF50;
+    --animation:#f4f7fb;
+    --text:#333;
+    --white:#fff;
+    --border:#ddd;
+    --radius:10px;
+    --spacing:20px;
 }
 
 *{
