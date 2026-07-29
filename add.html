@@ -4,38 +4,40 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Money Tracker</title>
-     <link rel="stylesheet" href="assets/css/style.css">
-<link rel="stylesheet" href="assets/css/responsive.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/responsive.css">
 </head>
 <body>
 
     <nav>
-        <a href="index.html">Home</a> |
-        <a href="dash.html">Dash</a> |
-        <a href="add.html">Add</a> |
-        <a href="summary.html">Summary</a> |
+        <a href="index.html">Home</a>
+        <a href="dash.html">Dash</a>
+        <a href="add.html">Add</a>
+        <a href="summary.html">Summary</a>
         <a href="transaction.html">Transaction</a>
     </nav>
 
     <main>
-    <h2>Add Income / Expense</h2>
+        <section>
+            <h2>Add Income / Expense</h2>
 
-    <form>
-        <label>Transaction Type</label><br>
-        <select>
-            <option>Income</option>
-            <option>Expense</option>
-        </select><br><br>
+            <form>
+                <label>Transaction Type</label>
+                <select>
+                    <option>Income</option>
+                    <option>Expense</option>
+                </select>
 
-        <label>Amount</label><br>
-        <input type="number"><br><br>
+                <label>Amount</label>
+                <input type="number">
 
-        <label>Category</label><br>
-        <input type="text"><br><br>
+                <label>Category</label>
+                <input type="text">
 
-        <button type="submit">Add Transaction</button>
-    </form>
-</main>
+                <button type="submit">Add Transaction</button>
+            </form>
+        </section>
+    </main>
 
 </body>
 </html>

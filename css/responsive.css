@@ -1,48 +1,40 @@
-@media (max-width:768px){
+@media (max-width: 768px) {
+    nav {
+        flex-direction: column;
+        align-items: center;
+    }
 
-nav{
-    flex-direction:column;
-    align-items:center;
+    nav a {
+        width: 100%;
+        text-align: center;
+    }
+
+    .cards {
+        grid-template-columns: 1fr;
+    }
+
+    table {
+        display: block;
+        overflow-x: auto;
+    }
+
+    button {
+        min-width: 0;
+    }
 }
 
-.cards{
-    flex-direction:column;
-}
+@media (max-width: 520px) {
+    main {
+        margin: 1rem auto 1.5rem;
+        padding: 1rem;
+    }
 
-table{
-    display:block;
-    overflow-x:auto;
-}
+    .page-header,
+    section {
+        padding: 1.25rem;
+    }
 
-input,
-select,
-textarea,
-button{
-    width:100%;
-}
-
-}
-@media (max-width:480px){
-
-header h1{
-    font-size:24px;
-}
-
-nav a{
-    width:100%;
-    text-align:center;
-}
-
-section{
-    padding:15px;
-}
-
-.card{
-    padding:15px;
-}
-
-table{
-    font-size:14px;
-}
-
+    button {
+        width: 100%;
+    }
 }
