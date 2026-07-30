@@ -18,8 +18,15 @@
     </nav>
 <main>
     <h2>Transaction History</h2>
+    <label>Filter</label>
 
+<select id="categoryFilter">
+    <option value="All">All</option>
+    <option value="Income">Income</option>
+    <option value="Expense">Expense</option>
+</select>
     <table border="1">
+        <thead>
         <tr>
             <th>Date</th>
             <th>Type</th>
@@ -29,6 +36,9 @@
         <tr>
             <td colspan="4">No Transactions Found</td>
         </tr>
+         </thead>
+          <tbody id="historyTable">
+    </tbody>
     </table>
 </main>
 </body>
