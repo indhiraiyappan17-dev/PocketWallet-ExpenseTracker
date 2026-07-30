@@ -195,5 +195,17 @@ footer {
     font-size: 0.95rem;
     box-shadow: var(--shadow);
 }
+nav a.active{
+    background:white;
+    color:var(--primary);
+}
 
+button:hover{
+    transform:scale(1.05);
+}
+
+#message{
+    margin-top:15px;
+    font-weight:bold;
+}
 
