@@ -14,6 +14,22 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}/* Navigation links color fix */
+nav a {
+  color: #333333 !important; /* Dark color so it's visible on white background */
+  text-decoration: none;
+  padding: 8px 12px;
+}
+
+/* Mouse hover style */
+nav a:hover {
+  color: #4CAF50;
+}
+
+/* Active page link styling */
+nav a.active {
+  color: #4CAF50 !important;
+  font-weight: bold;
 }
 
 body {
