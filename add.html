@@ -20,12 +20,18 @@
     <main>
     <h2>Add Income / Expense</h2>
 
-    <form>
+    <form id="transactionForm">
         <label>Transaction Type</label><br>
+        <select id="type">
+        <input type="number" id="amount">
+       <select id="category">
+       <input type="date" id="date">
+        <textarea id="description"></textarea>
         <select>
             <option>Income</option>
             <option>Expense</option>
         </select><br><br>
+        
 
         <label>Amount</label><br>
         <input type="number"><br><br>
@@ -34,8 +40,9 @@
         <input type="text"><br><br>
 
         <button type="submit">Add Transaction</button>
+        <p id="message"></p>
     </form>
 </main>
-
+<script src="../js/script.js"></script>
 </body>
 </html>
