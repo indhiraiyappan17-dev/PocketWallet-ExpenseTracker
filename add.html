@@ -1,48 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Money Tracker</title>
-     <link rel="stylesheet" href="css/style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Add Transaction</title>
+
+<link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/responsive.css">
+
 </head>
+
 <body>
 
-    <nav>
-        <a href="index.html">Home</a> |
-        <a href="dash.html">Dash</a> |
-        <a href="add.html">Add</a> |
-        <a href="summary.html">Summary</a> |
-        <a href="transaction.html">Transaction</a>
-    </nav>
+<header>
+<h1>Add Transaction</h1>
+</header>
 
-    <main>
-    <h2>Add Income / Expense</h2>
+<nav>
+    <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="dash.html">Dashboard</a></li>
+        <li><a href="add.html">Add Transaction</a></li>
+        <li><a href="transaction.html">History</a></li>
+        <li><a href="summary.html">Summary</a></li>
+    </ul>
+</nav>
 
-    <form id="transactionForm">
-        <label>Transaction Type</label><br>
-        <select id="type">
-        <input type="number" id="amount">
-       <select id="category">
-       <input type="date" id="date">
-        <textarea id="description"></textarea>
-        <select>
-            <option>Income</option>
-            <option>Expense</option>
-        </select><br><br>
-        
+<main>
 
-        <label>Amount</label><br>
-        <input type="number"><br><br>
+<form id="transactionForm">
 
-        <label>Category</label><br>
-        <input type="text"><br><br>
+<label>Type</label>
 
-        <button type="submit">Add Transaction</button>
-        <p id="message"></p>
-    </form>
+<select id="type">
+
+<option value="">Select</option>
+<option value="Income">Income</option>
+<option value="Expense">Expense</option>
+
+</select>
+
+<label>Category</label>
+
+<input type="text" id="category">
+
+<label>Amount</label>
+
+<input type="number" id="amount">
+
+<label>Date</label>
+
+<input type="date" id="date">
+
+<button type="submit">
+Add Transaction
+</button>
+
+</form>
+
 </main>
-<script src="../js/script.js"></script>
+
+<script src="storage.js"></script>
+<script src="app.js"></script>
+
 </body>
 </html>

@@ -1,29 +1,27 @@
-const balance = document.getElementById("totalBalance");
-const income = document.getElementById("totalIncome");
-const expense = document.getElementById("totalExpense");
+document.addEventListener("DOMContentLoaded", function () {
 
-function updateDashboard() {
+    const incomeElement = document.getElementById("totalIncome");
+    const expenseElement = document.getElementById("totalExpense");
+    const balanceElement = document.getElementById("balance");
+    const transactionElement = document.getElementById("totalTransactions");
 
+    const totals = calculateTotals();
     const transactions = getTransactions();
 
-    let totalIncome = 0;
-    let totalExpense = 0;
+    if (incomeElement) {
+        incomeElement.textContent = "₹" + totals.income;
+    }
 
-    transactions.forEach(item => {
+    if (expenseElement) {
+        expenseElement.textContent = "₹" + totals.expense;
+    }
 
-        if (item.type === "Income") {
-            totalIncome += Number(item.amount);
-        } else {
-            totalExpense += Number(item.amount);
-        }
+    if (balanceElement) {
+        balanceElement.textContent = "₹" + totals.balance;
+    }
 
-    });
+    if (transactionElement) {
+        transactionElement.textContent = transactions.length;
+    }
 
-    const totalBalance = totalIncome - totalExpense;
-
-    if (balance) balance.textContent = "₹" + totalBalance;
-    if (income) income.textContent = "₹" + totalIncome;
-    if (expense) expense.textContent = "₹" + totalExpense;
-}
-
-updateDashboard();
+});

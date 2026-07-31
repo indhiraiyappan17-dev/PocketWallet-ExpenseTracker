@@ -1,57 +1,66 @@
-const incomeEl = document.getElementById("summaryIncome");
-const expenseEl = document.getElementById("summaryExpense");
-const balanceEl = document.getElementById("summaryBalance");
-const summaryTable = document.getElementById("summaryTable");
+document.addEventListener("DOMContentLoaded", function () {
 
-function loadSummary() {
+    const incomeElement = document.getElementById("summaryIncome");
+    const expenseElement = document.getElementById("summaryExpense");
+    const balanceElement = document.getElementById("summaryBalance");
+    const categoryTable = document.getElementById("categorySummary");
 
     const transactions = getTransactions();
+    const totals = calculateTotals();
 
-    let income = 0;
-    let expense = 0;
-    let categories = {};
+    // Display Overall Summary
+    if (incomeElement) {
+        incomeElement.textContent = "₹" + totals.income;
+    }
 
-    transactions.forEach(item => {
+    if (expenseElement) {
+        expenseElement.textContent = "₹" + totals.expense;
+    }
 
-        const amount = Number(item.amount);
+    if (balanceElement) {
+        balanceElement.textContent = "₹" + totals.balance;
+    }
 
-        if (item.type === "Income") {
-            income += amount;
-        } else {
-            expense += amount;
+    // Category Summary
+    let categoryTotals = {};
+
+    transactions.forEach(function(item){
+
+        if(categoryTotals[item.category]){
+            categoryTotals[item.category] += Number(item.amount);
+        }else{
+            categoryTotals[item.category] = Number(item.amount);
         }
-
-        if (!categories[item.category]) {
-            categories[item.category] = 0;
-        }
-
-        categories[item.category] += amount;
 
     });
 
-    const balance = income - expense;
+    if(categoryTable){
 
-    if (incomeEl) incomeEl.textContent = "₹" + income;
-    if (expenseEl) expenseEl.textContent = "₹" + expense;
-    if (balanceEl) balanceEl.textContent = "₹" + balance;
+        categoryTable.innerHTML = "";
 
-    if (summaryTable) {
+        if(Object.keys(categoryTotals).length === 0){
 
-        summaryTable.innerHTML = "";
-
-        for (let category in categories) {
-
-            summaryTable.innerHTML += `
-            <tr>
-                <td>${category}</td>
-                <td>₹${categories[category]}</td>
-            </tr>
+            categoryTable.innerHTML = `
+                <tr>
+                    <td colspan="2">No Data Available</td>
+                </tr>
             `;
+
+        }else{
+
+            for(let category in categoryTotals){
+
+                categoryTable.innerHTML += `
+                    <tr>
+                        <td>${category}</td>
+                        <td>₹${categoryTotals[category]}</td>
+                    </tr>
+                `;
+
+            }
 
         }
 
     }
 
-}
-
-loadSummary();
+});

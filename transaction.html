@@ -1,47 +1,89 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Money Tracker</title>
-     <link rel="stylesheet" href="css/style.css">
-<link rel="stylesheet" href="css/responsive.css">
+    <title>Transaction History</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
 </head>
+
 <body>
 
-    <nav>
-         <a href="index.html">Home</a> |
-        <a href="dash.html">Dash</a> |
-        <a href="add.html">Add</a> |
-        <a href="summary.html">Summary</a> |
-        <a href="transaction.html">Transaction</a>
-    </nav>
-<main>
-    <h2>Transaction History</h2>
-    <label>Filter</label>
+<header>
+    <h1>PocketWallet</h1>
+    <p>Transaction History</p>
+</header>
 
-<select id="categoryFilter">
-    <option value="All">All</option>
-    <option value="Income">Income</option>
-    <option value="Expense">Expense</option>
-</select>
-    <table border="1">
-        <thead>
-        <tr>
-            <th>Date</th>
-            <th>Type</th>
-            <th>Category</th>
-            <th>Amount</th>
-        </tr>
-        <tr>
-            <td colspan="4">No Transactions Found</td>
-        </tr>
-         </thead>
-          <tbody id="historyTable">
-    </tbody>
-    </table>
+<nav>
+    <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="dash.html">Dashboard</a></li>
+        <li><a href="add.html">Add Transaction</a></li>
+        <li><a href="transaction.html">History</a></li>
+        <li><a href="summary.html">Summary</a></li>
+    </ul>
+</nav>
+
+<main>
+
+<h2>Transaction History</h2>
+
+<div class="card">
+
+    <input
+        type="text"
+        id="search"
+        placeholder="Search by Category">
+
+    <br><br>
+
+    <select id="filter">
+
+        <option value="All">All Transactions</option>
+        <option value="Income">Income</option>
+        <option value="Expense">Expense</option>
+
+    </select>
+
+</div>
+
+<table>
+
+<thead>
+
+<tr>
+
+<th>Date</th>
+<th>Type</th>
+<th>Category</th>
+<th>Amount</th>
+<th>Action</th>
+
+</tr>
+
+</thead>
+
+<tbody id="transactionTable">
+
+<tr>
+
+<td colspan="5">No Transactions Found</td>
+
+</tr>
+
+</tbody>
+
+</table>
+
 </main>
-    <script src="js/storage.js"></script>
+
+
+
+<script src="js/storage.js"></script>
 <script src="js/transaction.js"></script>
+
 </body>
 </html>

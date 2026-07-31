@@ -1,36 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Money Tracker</title>
-     <link rel="stylesheet" href="css/style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboard</title>
+
+<link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/responsive.css">
 </head>
+
 <body>
-    <nav>
-         <a href="index.html">Home</a> |
-        <a href="dash.html">Dash</a> |
-        <a href="add.html">Add</a> |
-        <a href="summary.html">Summary</a> |
-        <a href="transaction.html">Transaction</a>
-    </nav>
-    <main>
-    <h2>Dashboard</h2>
-    <div class="card">
-    <h3>Current Balance</h3>
-    <p id="currentbalance">$0.00</p>
-    </div>
-     <div class="card">   
-    <h3>Total Income</h3>
-    <p id="totalincome">$0.00</p>
-        </div>
-   <div class="card">
-    <h3>Total Expense</h3>
-    <p  id="totalExpense">$0.00</p>
-        </div>
+
+<header>
+<h1>PocketWallet Dashboard</h1>
+</header>
+
+<nav>
+    <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="dash.html">Dashboard</a></li>
+        <li><a href="add.html">Add Transaction</a></li>
+        <li><a href="transaction.html">History</a></li>
+        <li><a href="summary.html">Summary</a></li>
+    </ul>
+</nav>
+
+<main>
+
+<div class="dashboard">
+
+<div class="card">
+<h3>Total Income</h3>
+<h2 id="totalIncome">₹0</h2>
+</div>
+
+<div class="card">
+<h3>Total Expense</h3>
+<h2 id="totalExpense">₹0</h2>
+</div>
+
+<div class="card">
+<h3>Balance</h3>
+<h2 id="balance">₹0</h2>
+</div>
+
+<div class="card">
+<h3>Total Transactions</h3>
+<h2 id="totalTransactions">0</h2>
+</div>
+
+</div>
+
 </main>
-<script src="js/storage.js"></script>
-<script src="js/dash.js"></script>
+
+<script src="storage.js"></script>
+<script src="dash.js"></script>
+
 </body>
 </html>

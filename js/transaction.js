@@ -1,47 +1,76 @@
-const tableBody = document.getElementById("historyTable");
-const categoryFilter = document.getElementById("categoryFilter");
+document.addEventListener("DOMContentLoaded", function () {
 
-function displayTransactions(filter = "All") {
+    const tableBody = document.getElementById("transactionTable");
+    const search = document.getElementById("search");
+    const filter = document.getElementById("filter");
 
-    if (!tableBody) return;
+    function displayTransactions() {
 
-    const transactions = getTransactions();
+        let transactions = getTransactions();
 
-    tableBody.innerHTML = "";
+        const searchText = search ? search.value.toLowerCase() : "";
+        const filterValue = filter ? filter.value : "All";
 
-    let filtered = transactions;
+        tableBody.innerHTML = "";
 
-    if (filter !== "All") {
-        filtered = transactions.filter(item => item.type === filter);
+        let filtered = transactions.filter(function(item){
+
+            let matchCategory = item.category.toLowerCase().includes(searchText);
+
+            let matchType = filterValue === "All" || item.type === filterValue;
+
+            return matchCategory && matchType;
+
+        });
+
+        if(filtered.length === 0){
+
+            tableBody.innerHTML = `
+                <tr>
+                    <td colspan="5">No Transactions Found</td>
+                </tr>
+            `;
+
+            return;
+
+        }
+
+        filtered.forEach(function(item,index){
+
+            tableBody.innerHTML += `
+                <tr>
+                    <td>${item.date}</td>
+                    <td>${item.type}</td>
+                    <td>${item.category}</td>
+                    <td>₹${item.amount}</td>
+                    <td>
+                        <button onclick="removeTransaction(${index})">
+                            Delete
+                        </button>
+                    </td>
+                </tr>
+            `;
+
+        });
+
     }
 
-    if (filtered.length === 0) {
-        tableBody.innerHTML = `
-        <tr>
-            <td colspan="4">No Results Found</td>
-        </tr>`;
-        return;
+    window.removeTransaction = function(index){
+
+        deleteTransaction(index);
+
+        displayTransactions();
+
     }
 
-    filtered.forEach(item => {
+    if(search){
+        search.addEventListener("keyup", displayTransactions);
+    }
 
-        tableBody.innerHTML += `
-        <tr>
-            <td>${item.date}</td>
-            <td>${item.type}</td>
-            <td>${item.category}</td>
-            <td>₹${item.amount}</td>
-        </tr>
-        `;
+    if(filter){
+        filter.addEventListener("change", displayTransactions);
+    }
 
-    });
+    displayTransactions();
 
-}
-if (categoryFilter) {
-
-    categoryFilter.addEventListener("change", function () {
-        displayTransactions(this.value);
-    });
-
-}
-displayTransactions();
+});
