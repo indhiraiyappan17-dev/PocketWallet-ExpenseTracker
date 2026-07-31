@@ -71,6 +71,7 @@ document.addEventListener("DOMContentLoaded", function () {
         filter.addEventListener("change", displayTransactions);
     }
 
+    
     displayTransactions();
 
 });
