@@ -6,72 +6,110 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function displayTransactions() {
 
-        let transactions = getTransactions();
+        try {
 
-        const searchText = search ? search.value.toLowerCase() : "";
-        const filterValue = filter ? filter.value : "All";
-
-        tableBody.innerHTML = "";
-
-        let filtered = transactions.filter(function(item){
-
-            let matchCategory = item.category.toLowerCase().includes(searchText);
-
-            let matchType = filterValue === "All" || item.type === filterValue;
-
-            return matchCategory && matchType;
-
-        });
-
-        if(filtered.length === 0){
-
+            // Loading State
             tableBody.innerHTML = `
                 <tr>
-                    <td colspan="5">No Transactions Found</td>
+                    <td colspan="5">Loading...</td>
                 </tr>
             `;
 
-            return;
+            // Get Transactions
+            let transactions = getTransactions();
 
-        }
+            const searchText = search ? search.value.toLowerCase() : "";
+            const filterValue = filter ? filter.value : "All";
 
-        filtered.forEach(function(item,index){
+            // Clear Table
+            tableBody.innerHTML = "";
 
-            tableBody.innerHTML += `
+            // Filter Transactions
+            let filtered = transactions.filter(function (item) {
+
+                let matchCategory = item.category
+                    .toLowerCase()
+                    .includes(searchText);
+
+                let matchType =
+                    filterValue === "All" ||
+                    item.type === filterValue;
+
+                return matchCategory && matchType;
+            });
+
+            // No Data
+            if (filtered.length === 0) {
+
+                tableBody.innerHTML = `
+                    <tr>
+                        <td colspan="5">No Transactions Found</td>
+                    </tr>
+                `;
+
+                return;
+            }
+
+            // Display Data
+            filtered.forEach(function (item, index) {
+
+                tableBody.innerHTML += `
+                    <tr>
+                        <td>${item.date}</td>
+                        <td>${item.type}</td>
+                        <td>${item.category}</td>
+                        <td>₹${item.amount}</td>
+                        <td>
+                            <button onclick="removeTransaction(${index})">
+                                Delete
+                            </button>
+                        </td>
+                    </tr>
+                `;
+
+            });
+
+        } catch (error) {
+
+            // Error State
+            tableBody.innerHTML = `
                 <tr>
-                    <td>${item.date}</td>
-                    <td>${item.type}</td>
-                    <td>${item.category}</td>
-                    <td>₹${item.amount}</td>
-                    <td>
-                        <button onclick="removeTransaction(${index})">
-                            Delete
-                        </button>
+                    <td colspan="5">
+                        ❌ Error Loading Transactions
                     </td>
                 </tr>
             `;
 
-        });
+            console.error(error);
+
+        }
 
     }
 
-    window.removeTransaction = function(index){
+    // Delete Transaction
+    window.removeTransaction = function (index) {
 
         deleteTransaction(index);
 
         displayTransactions();
 
-    }
+    };
 
-    if(search){
+    // Search
+    if (search) {
+
         search.addEventListener("keyup", displayTransactions);
+
     }
 
-    if(filter){
+    // Filter
+    if (filter) {
+
         filter.addEventListener("change", displayTransactions);
+
     }
 
-    
+    // Initial Load
     displayTransactions();
 
 });

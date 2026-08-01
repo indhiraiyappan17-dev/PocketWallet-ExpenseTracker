@@ -1,14 +1,16 @@
 # PocketWallet – Expense Tracker
 
-## Project Description
-PocketWallet is a simple web application that helps users manage their daily income and expenses. Users can add transactions, view transaction history, and track their monthly financial summary.
+# PocketWallet Expense Tracker
 
 ## Features
+- Add Income and Expense
 - Dashboard
-- Add Income & Expense
 - Transaction History
 - Monthly Summary
-- LocalStorage Support
+- Local Storage
+- Fetch API
+- Loading State
+- Error Handling
 - Responsive Design
 
 ## Technologies Used
@@ -17,6 +19,6 @@ PocketWallet is a simple web application that helps users manage their daily inc
 - JavaScript
 
 ## Team Members
-- Indhira – Navigation (NAV)
-- Dharshana M.S. – Project Development
+- Indhira 
+- Dharshana M.S. 
 
