@@ -74,12 +74,24 @@ body{
    HEADER
 ========================== */
 
-header{
-    background:linear-gradient(135deg,#E91E63,#9C27B0);
-    color:white;
-    text-align:center;
-    padding:20px;
-    margin-bottom:15px;   /* Gap between header and nav */
+.header {
+    text-align: center;
+    margin: 20px 0;
+}h1{
+    color: #df10a1;
+    text-align: center;
+}
+
+
+.header h1 {
+    font-size: 32px;
+    margin-bottom: 8px;
+}
+
+.header p {
+    color: #de29d8;
+    font-size: 25px;
+    text-align: center;
 }
 
 /* ==========================
