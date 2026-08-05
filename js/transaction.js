@@ -97,10 +97,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Search
     if (search) {
-
-        search.addEventListener("keyup", displayTransactions);
-
-    }
+search.addEventListener("input", displayTransactions);
 
     // Filter
     if (filter) {
