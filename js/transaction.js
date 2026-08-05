@@ -8,23 +8,17 @@ document.addEventListener("DOMContentLoaded", function () {
 
         try {
 
-            // Loading State
             tableBody.innerHTML = `
                 <tr>
                     <td colspan="5">Loading...</td>
                 </tr>
             `;
 
-            // Get Transactions
             let transactions = getTransactions();
 
             const searchText = search ? search.value.toLowerCase() : "";
             const filterValue = filter ? filter.value : "All";
 
-            // Clear Table
-            tableBody.innerHTML = "";
-
-            // Filter Transactions
             let filtered = transactions.filter(function (item) {
 
                 let matchCategory = item.category
@@ -38,7 +32,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 return matchCategory && matchType;
             });
 
-            // No Data
+            tableBody.innerHTML = "";
+
             if (filtered.length === 0) {
 
                 tableBody.innerHTML = `
@@ -46,11 +41,9 @@ document.addEventListener("DOMContentLoaded", function () {
                         <td colspan="5">No Transactions Found</td>
                     </tr>
                 `;
-
                 return;
             }
 
-            // Display Data
             filtered.forEach(function (item, index) {
 
                 tableBody.innerHTML += `
@@ -66,47 +59,33 @@ document.addEventListener("DOMContentLoaded", function () {
                         </td>
                     </tr>
                 `;
-
             });
 
         } catch (error) {
 
-            // Error State
             tableBody.innerHTML = `
                 <tr>
-                    <td colspan="5">
-                        ❌ Error Loading Transactions
-                    </td>
+                    <td colspan="5">❌ Error Loading Transactions</td>
                 </tr>
             `;
 
             console.error(error);
-
         }
-
     }
 
-    // Delete Transaction
     window.removeTransaction = function (index) {
-
         deleteTransaction(index);
-
         displayTransactions();
-
     };
 
-    // Search
     if (search) {
-search.addEventListener("input", displayTransactions);
-
-    // Filter
-    if (filter) {
-
-        filter.addEventListener("change", displayTransactions);
-
+        search.addEventListener("input", displayTransactions);
     }
 
-    // Initial Load
+    if (filter) {
+        filter.addEventListener("change", displayTransactions);
+    }
+
     displayTransactions();
 
 });
